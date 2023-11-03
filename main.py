@@ -8,6 +8,7 @@ from modules.sys_status import sys_status
 
 load_dotenv()
 SECRET_KEY = environ.get('SECRET_KEY')
+ALLOWED_ORIGINS = ['https://mealuet.com', 'https://www.mealuet.com']
 
 app = Flask(__name__)
 
@@ -27,6 +28,15 @@ def get_sys_status():
 @app.route('/api/status/minecraft', methods=['GET'])
 def get_mc_status():
     return mc_status()
+
+
+@app.after_request
+def add_cors_headers(response):
+    origin = request.headers.get('Origin')
+    if origin and origin in ALLOWED_ORIGINS:
+        response.headers['Access-Control-Allow-Origin'] = origin
+    response.headers['Access-Control-Allow-Headers'] = 'X-API-KEY'
+    return response
 
 
 if __name__ == '__main__':
