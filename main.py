@@ -1,11 +1,13 @@
 from os import environ
 
+from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 
 from modules.mc_status import mc_status
 from modules.sys_status import sys_status
 
-SECRET_KEY = environ['SECRET_KEY']
+load_dotenv()
+SECRET_KEY = environ.get('SECRET_KEY')
 
 app = Flask(__name__)
 
@@ -28,4 +30,5 @@ def get_mc_status():
 
 
 if __name__ == '__main__':
+    assert SECRET_KEY is not None, 'SECRET_KEY must be provided. '
     app.run(host='localhost', port=25595)

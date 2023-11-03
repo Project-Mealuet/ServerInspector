@@ -1,0 +1,4 @@
+Flask
+mcipc
+psutil
+python-dotenv
