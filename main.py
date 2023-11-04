@@ -11,13 +11,7 @@ load_dotenv()
 SECRET_KEY = environ.get('SECRET_KEY')
 
 app = Flask(__name__)
-CORS(app, resources={
-    '/api/*': {
-        'origins': '*',
-        'allow_headers': ['X-API-KEY'],
-        'methods': ['GET', 'OPTIONS']
-    }
-})
+CORS(app)
 
 
 @app.before_request
