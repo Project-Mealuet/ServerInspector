@@ -5,6 +5,7 @@ from flask import Flask, jsonify, request
 
 from modules.mc_status import mc_status
 from modules.sys_status import sys_status
+from modules.server_meta import server_meta
 
 load_dotenv()
 SECRET_KEY = environ.get('SECRET_KEY')
@@ -27,6 +28,11 @@ def get_sys_status():
 @app.route('/api/status/minecraft', methods=['GET'])
 def get_mc_status():
     return mc_status()
+
+
+@app.route('/api/meta/<path:sub_path>', methods=['GET'])
+def get_server_meta(sub_path):
+    return server_meta(sub_path)
 
 
 if __name__ == '__main__':
