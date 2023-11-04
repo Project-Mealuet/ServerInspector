@@ -35,6 +35,11 @@ def get_server_meta(sub_path):
     return server_meta(sub_path)
 
 
+@app.route('/api/meta', methods=['GET'])
+def get_server_meta():
+    return server_meta('')
+
+
 if __name__ == '__main__':
     assert SECRET_KEY is not None, 'SECRET_KEY must be provided. '
     app.run(host='localhost', port=25595)
