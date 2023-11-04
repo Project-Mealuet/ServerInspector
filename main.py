@@ -35,7 +35,7 @@ def get_server_meta(sub_path):
     return server_meta(sub_path)
 
 
-@app.route('/api/meta', methods=['GET'])
+@app.route('/api/meta/', methods=['GET'])
 def get_default_meta():
     return jsonify({
         'name': '',
