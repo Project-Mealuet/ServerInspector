@@ -11,6 +11,13 @@ load_dotenv()
 SECRET_KEY = environ.get('SECRET_KEY')
 
 app = Flask(__name__)
+CORS(app, resources={
+    '/api/*': {
+        'origins': '*',
+        'allow_headers': ['X-API-KEY'],
+        'methods': ['GET', 'OPTIONS']
+    }
+})
 
 
 @app.before_request
@@ -32,5 +39,4 @@ def get_mc_status():
 
 if __name__ == '__main__':
     assert SECRET_KEY is not None, 'SECRET_KEY must be provided. '
-    CORS(app)
     app.run(host='localhost', port=25595)
