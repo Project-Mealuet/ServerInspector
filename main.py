@@ -2,7 +2,6 @@ from os import environ
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
-from flask_cors import CORS
 
 from modules.mc_status import mc_status
 from modules.sys_status import sys_status
@@ -11,7 +10,6 @@ load_dotenv()
 SECRET_KEY = environ.get('SECRET_KEY')
 
 app = Flask(__name__)
-CORS(app)
 
 
 @app.before_request
