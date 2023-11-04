@@ -36,8 +36,13 @@ def get_server_meta(sub_path):
 
 
 @app.route('/api/meta', methods=['GET'])
-def get_server_meta():
-    return server_meta('')
+def get_default_meta():
+    return jsonify({
+        'name': '',
+        'logo': '',
+        'game_version': '',
+        'mod_loader': ''
+    })
 
 
 if __name__ == '__main__':
