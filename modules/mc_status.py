@@ -21,7 +21,7 @@ def mc_status():
                 }
             })
     except ConnectionRefusedError:
-        return {
+        return jsonify({
             'host_name': '',
             'game_type': '',
             'game_id': '',
@@ -34,5 +34,5 @@ def mc_status():
                 'max': 0,
                 'list': []
             }
-        }
+        })
 
