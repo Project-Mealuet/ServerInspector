@@ -2,6 +2,7 @@ from os import environ
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 from modules.mc_status import mc_status
 from modules.sys_status import sys_status
@@ -29,13 +30,7 @@ def get_mc_status():
     return mc_status()
 
 
-@app.after_request
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Headers'] = 'X-API-KEY'
-    return response
-
-
 if __name__ == '__main__':
     assert SECRET_KEY is not None, 'SECRET_KEY must be provided. '
+    CORS(app)
     app.run(host='localhost', port=25595)
