@@ -2,7 +2,7 @@ from os.path import join, exists
 
 from flask import send_from_directory, jsonify
 
-GAME_ROOT = '/home/ubuntu'
+GAME_ROOT = '/home/ubuntu/mealuet-serverpacks'
 
 
 def server_meta(sub_path):
