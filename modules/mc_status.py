@@ -3,8 +3,24 @@ from flask import jsonify
 
 
 def mc_status():
-    with Client('127.0.0.1', 25585) as client:
-        full_status = client.stats(full=True)
+    try:
+        with Client('127.0.0.1', 25585) as client:
+            full_status = client.stats(full=True)
+    except ConnectionRefusedError:
+        full_status = {
+            'host_name': '',
+            'game_type': '',
+            'game_id': '',
+            'version': '',
+            'plugins': [],
+            'map': '',
+            'host_port': 0,
+            'player': {
+                'num': 0,
+                'max': 0,
+                'list': []
+            }
+        }
 
     return jsonify({
         'host_name': full_status.host_name,
