@@ -7,7 +7,7 @@ GAME_ROOT = '/home/ubuntu'
 
 def server_meta(sub_path):
     full_path = join(GAME_ROOT, sub_path)
-    if not exists(full_path):
+    if not exists(join(full_path, 'server_meta.json')):
         return jsonify({
             'name': '',
             'logo': '',
