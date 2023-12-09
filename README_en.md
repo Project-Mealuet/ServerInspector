@@ -19,7 +19,7 @@ A simple API implementation based on `flask`, used for obtaining server performa
 - Configure `server.properties`:
     ```properties
     enable-query=true
-    query.port=25585
+    query.port=25565
     ```
 - Start the API server:
     ```bash

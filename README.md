@@ -21,7 +21,7 @@
 - 配置 `server.properties` ：
     ```properties
     enable-query=true
-    query.port=25585
+    query.port=25565
     ```
 - 启动 API 服务器：
     ```bash

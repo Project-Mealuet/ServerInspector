@@ -1,10 +1,10 @@
-from mcipc.query import Client
 from flask import jsonify
+from mcipc.query import Client
 
 
 def mc_status():
     try:
-        with Client('127.0.0.1', 25585) as client:
+        with Client('127.0.0.1', 25565) as client:
             full_status = client.stats(full=True)
             return jsonify({
                 'host_name': full_status.host_name,
